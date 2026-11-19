@@ -1,6 +1,6 @@
 # Revenue Patterns of Solo-Built Software Products (2024-2026)
 
-> **How this was researched:** WebFetch could not reach any external host in this session (extensionpay.com, dev.to and trustmrr.com all failed DNS resolution because of the session's network allowlist). So every finding below comes from web-search result summaries, not from reading the full pages. Each number is cited to the URL the search engine named, but it should be checked on the primary page before anyone relies on it in a decision.
+> **How this was researched:** WebFetch could not reach any external host in this session (extensionpay.com, dev.to and trustmrr.com all failed DNS resolution because of the session's network allowlist). The session's web-search budget also ran out after the user added the marketplace-only constraint (see section 6), so marketplaces like Superhive, Fab, Unity Asset Store, JetBrains, Atlassian, Steam and itch.io could not be researched. So every finding below comes from web-search result summaries, not from reading the full pages. Each number is cited to the URL the search engine named, but it should be checked on the primary page before anyone relies on it in a decision.
 >
 > **Verification labels used throughout:**
 > - **[VERIFIED]**: the revenue comes through a payment-provider API (TrustMRR, Scoutr), or a journalist checked documents.
@@ -351,91 +351,215 @@ Secondary failures:
 
 ---
 
-## 6. What this means for picking a product
+## 6. Under the user's new hard constraint (sell only through an established marketplace with native payments and discovery), which formats qualify, and what seller revenue evidence exists?
+
+> The coordinator added this constraint after sections 1-5 were researched. The web search budget for this session (shared across agents) ran out right after it arrived, so **no new searches could be run** on Superhive/Blender Market, Fab, Unity Asset Store, JetBrains Marketplace, Atlassian Marketplace, Steam (software), itch.io or Webflow. Everything below is re-weighted from evidence already gathered. Marketplaces with no gathered evidence are listed in the Gaps sub-section and are **not** treated as proven.
 
 ### Takeaway
-For an unknown solo builder who wants a first sale within days to weeks, the evidence points to a **freemium Chrome/Edge extension** that is:
-- attached to a high-traffic AI or professional web app,
-- built for non-developer professionals,
-- priced at $5 to $9/month or $29 to $49 lifetime,
-- found through Chrome Web Store search.
+Of the formats with real revenue evidence, only some are sold *inside* a trusted marketplace's own checkout:
+- Shopify App Store
+- Microsoft Store
+- Mac App Store
+- Framer Marketplace
+- Gumroad (Discover)
+- Discord App Subscriptions
+- AppSumo
+- Figma Community (only partly; paid publishing appears limited)
 
-The second choice is a **small native desktop utility with a one-time license** ($15 to $49), launched on Reddit, X and Product Hunt and, for Windows, listed free on the Microsoft Store. Avoid boilerplates, generic templates, and VS Code, Raycast or Obsidian plugins as primary revenue bets.
+The highest-revenue solo format found in sections 1-5, Chrome extensions, **fails the strict constraint**: the Chrome Web Store has had no native payments since 2021. The same goes for VS Code, Raycast, Obsidian, boilerplates and directly sold Mac apps.
+
+Ranking marketplace-native formats by documented willingness to pay gives two top choices:
+1. **Shopify App Store apps:** merchants pay monthly; 0% fee on the first $1M.
+2. **Windows/Mac desktop utilities on the Microsoft Store or Mac App Store:** one-time paid listings; the Microsoft Store has been free to join since Sept 2025.
+
+Framer templates and Gumroad Discover come next. They are faster to build but are extreme power laws.
+
+### Cited Findings
+
+**Formats that satisfy the constraint (native checkout + discovery), with the seller evidence gathered**
+
+- **Shopify App Store: satisfies.**
+  - **Developers keep 100% of the first $1M lifetime gross app revenue, then 85%.** Only revenue earned from Jan 1, 2025 counts toward the threshold — [Shopify.dev](https://shopify.dev/docs/apps/launch/distribution/revenue-share)
+  - Seller revenue estimates: a "solid middle band" of $2K to $20K MRR; the median paying app is probably under $1K MRR [ESTIMATE] — [Taylor Sicard](https://taylorsicard.com/blog/shopify-partner-earnings-benchmarks-2026); [GapQuery](https://www.gapquery.com/blog/how-much-do-shopify-apps-make)
+  - Support, agency and ad costs cut into margins — [AdsX](https://adsx.com/blog/how-much-shopify-app-developers-make)
+- **Microsoft Store (Windows apps): satisfies.**
+  - **Free registration for individual developers since Sept 2025**, in about 200 markets.
+  - Non-game apps may also use their own payment system and keep 100%.
+  - Microsoft claims 250M+ monthly users.
+  - Microsoft-selected testimonials: one publisher saw 10x daily installs; **backiee** saw daily active users go from 10K to 40K and revenue grow 6x.
+  - Source: [Windows Developer Blog](https://blogs.windows.com/windowsdeveloper/2025/09/10/free-developer-registration-for-individual-developers-on-microsoft-store/)
+  - One article reports a 95% developer share for direct-link downloads and 85% for in-Store discovery (unconfirmed, inconsistently worded) — [Appetiser](https://appetiser.com.au/blog/microsoft-store-revenue-now-gives-developers-a-95-cut-on-one-condition/)
+  - A critical blog argues the Store fails indie developers; its evidence is a game, not a utility — [Dreamsaga](https://dreamsaga.net/the-1-4-billion-user-paradox-why-the-microsoft-store-is-failing-indie-developers/)
+- **Mac App Store: satisfies.**
+  - Apple's commission is cited at 15% to 30% — [Froxi](https://froxi.ai/blog/how-much-money-do-indie-apps-actually-make-in-2026); [AppOpportunity](https://appopportunity.com/blog/indie-app-revenue-models-2026)
+  - Public data for indie Mac revenue is thin, partly because much of the market sells outside the Mac App Store — [StealWhatWorks](https://stealwhatworks.com/blogs/news/mac-apps-making-real-money-now)
+  - Mac utility revenue figures that show demand for the *category* (most were sold directly, not through the App Store):
+    - Cooldock about $6.3K/30 days at $15 one-time — [StealWhatWorks](https://stealwhatworks.com/blogs/news/mac-apps-making-real-money-now)
+    - Xnapper about $6K/month; MacWhisper about $100K total — [Startups.email](https://startupsemail.substack.com/p/100000-revenue-with-a-simple-mac)
+    - BoltAI $15K to $30K/month — [Indie Hackers](https://www.indiehackers.com/post/how-going-viral-on-x-helped-this-solopreneur-reach-15k-mo-with-his-native-ai-apps-ZBbFBKrpwqZQkQsy7Bcs)
+- **Setapp (Mac subscription bundle): satisfies** as a marketplace, but pays developers by user activity rather than per sale — [Wikipedia: Setapp](https://en.wikipedia.org/wiki/Setapp)
+- **Framer Marketplace (website templates): satisfies.**
+  - **$6.5M paid to creators in 2025**; creators keep 100% of marketplace template sales.
+  - Top creators reported $13.3K to $21.7K/month in 2025; a new seller made $135 in 38 days.
+  - Creators report a more crowded shelf.
+  - Source: [Framer creators](https://framer.com/creators); [Framer help](https://www.framer.com/help/articles/how-the-creator-program-works/)
+- **Gumroad (Discover): satisfies.**
+  - **30% fee on Discover-originated sales**; 10% + $0.50 on direct sales; merchant of record since Jan 1, 2025 — [checkoutpage](https://checkoutpage.com/blog/gumroad-fees); [Dodo Payments](https://dodopayments.com/blogs/gumroad-fees-explained)
+  - Seller outcomes: Notion templates have a modeled **median under $520 lifetime**, top 10% above $7,560; the top 1% of products take 77.3% of revenue [ESTIMATE] — [InsightRaider](https://insightraider.com/en/answers/how-much-can-you-make-selling-notion-templates-on-gumroad)
+- **Discord App Subscriptions (premium bots): satisfies.**
+  - The fee is reported as 10% or as 15%/30% (sources conflict).
+  - Typical premium pricing is $3 to $10/month; a small bot earns about $50 to $200/month.
+  - Source: [space-node](https://space-node.net/blog/discord-bot-monetisation-guide-2026); [Monaco CPA](https://www.monacocpa.cpa/post/discord-server-income-taxes-subscriptions); [Latenode](https://community.latenode.com/t/how-to-monetize-my-discord-bot-and-earn-revenue/29042)
+- **AppSumo (lifetime-deal marketplace): satisfies.**
+  - The cut is typically 50% (older figure) — [Wikipedia: AppSumo](https://en.wikipedia.org/wiki/AppSumo)
+  - One founder made $50K from a first campaign — [SaaS Club](https://saasclub.io/playbooks/george-georgiadis-lifetime-deals-framework/)
+  - Support burden is heavy — [Favors.dev](https://favors.dev/blog/appsumo-lifetime-deals-worth-it)
+- **Figma Community (paid plugins): only partly satisfies.**
+  - Native paid publishing appears limited to accepted publishers (2025 forum thread) — [Figma forum](https://forum.figma.com/ask-the-community-7/can-plugins-still-use-figma-native-payments-monetization-54336)
+  - The fee is cited as 15% or as nothing (conflict) — [Kelviq](https://www.kelviq.com/blog/figma-plugin-monetization/)
+  - Estimated median for paid plugins is $200 to $800/month — [JakeInsight](https://jakeinsight.com/side-income/2026-03-12-create-and-sell-figma-plugins-as-a-developer/)
+
+**Formats that fail the strict constraint**
+- **Chrome Web Store extensions: no native payments since 2021.** Sellers use ExtensionPay, Stripe or Lemon Squeezy checkouts — [MicroGaps](https://www.microgaps.com/gaps/chrome-extension-monetization-sdk-gap)
+- **VS Code Marketplace: no paid listings or payment processing** — [DodoPayments](https://dodopayments.com/blogs/sell-vscode-extensions)
+- **Raycast Store: all extensions are free**; no paid channel found — [unsubbed](https://unsubbed.pages.dev/tools/raycast-extensions/)
+- **Obsidian community directory: payment is handled by the developer**, not the directory — [Obsidian forum](https://forum.obsidian.md/t/paid-plugin-market-and-how-to-solve-unmaintained-plugins/109137)
+- **Boilerplates, micro-SaaS on the builder's own domain, and directly sold Mac apps** (ShipFast, TypingMind, BoltAI, Screen Studio through Lemon Squeezy) are sold on personal sites — [openaitoolshub](https://www.openaitoolshub.org/ai-product-research/screen-studio); [Dupple](https://dupple.com/reviews/shipfast)
+
+### Inferences
+- **A hybrid "partial" option:** list a free extension or plugin in the Chrome Web Store, VS Code Marketplace or Obsidian directory for discovery, and sell the Pro license key as a **Gumroad product**. The buyer then pays inside an established marketplace's checkout (Gumroad is merchant of record) rather than an unknown site, and the free listing provides discovery. Whether this satisfies the user's constraint is their call; it should be presented as "partial."
+- Moving from "highest documented solo revenue" to "marketplace-native" means giving up the best-evidenced format (Chrome extensions) in exchange for:
+  - **Shopify**: the strongest willingness to pay, but slower to build and the heaviest support burden.
+  - **Microsoft Store / Mac App Store**: one-time paid desktop utilities. The revenue evidence comes mostly from Mac apps sold *outside* the store, so store-specific revenue is unproven.
+- The Microsoft Store change (free listing; keep 100% with your own payments, or use Store payments) makes Windows utilities the **cheapest marketplace-native test** for a solo builder. A paid listing can be live within days, and app-store-style discovery exists. The caveat is that store revenue evidence is limited to Microsoft's own testimonials.
+
+### Gaps
+- **Not researched (search budget exhausted).** These marketplaces have native paid listings according to general background knowledge, but **no revenue data, fee terms or seller cases were gathered in this session.** Each needs a follow-up search before the final report relies on it:
+  - Superhive (formerly Blender Market): Blender add-ons.
+  - Fab (Epic's Unreal/asset marketplace).
+  - Unity Asset Store: editor tools and extensions.
+  - JetBrains Marketplace: paid IDE plugins with JetBrains-handled licensing.
+  - Atlassian Marketplace: Jira/Confluence apps. Search results surfaced a StealWhatWorks article titled "Which Atlassian apps are making real money now?", but its content was not retrieved: [link](https://stealwhatworks.com/blogs/news/atlassian-apps-making-real-money-now).
+  - Steam software/utilities (non-game tools on Steam).
+  - itch.io: tools and assets.
+  - Webflow template marketplace.
+  - Notion's own Template Marketplace (paid templates).
+
+  Background knowledge, **not verified this session**, suggests these follow-ups are worth prioritizing: Steam has notable solo-built PC utilities (e.g., Lossless Scaling); Unity Asset Store and Fab editor tools are a known niche for solo developers; JetBrains Marketplace and Atlassian Marketplace serve B2B buyers who pay for plugins.
+- No Mac App Store-specific or Microsoft Store-specific revenue figures were found for solo utility developers.
+
+---
+
+## 7. What this means for picking a product
+
+### Takeaway
+Two scenarios:
+- **Without the marketplace constraint**, the evidence favors a freemium Chrome/Edge extension attached to a high-traffic AI or professional web app ($5 to $9/month or $29 to $49 lifetime), with a one-time desktop utility second.
+- **With the user's hard constraint** (sale through an established marketplace's native checkout), the best-supported choices are:
+  1. A **narrow-pain Shopify app**: strongest willingness to pay, 0% fee up to $1M, but slower and support-heavy.
+  2. A **small paid Windows utility on the Microsoft Store**, optionally also on the Mac App Store: free to list, can ship in days, one-time $5 to $30; store-specific revenue unproven.
+  3. A **Framer template** or a **Gumroad Discover product**: fastest to build, extreme power law.
+
+A Chrome extension can only partly qualify, through a Gumroad-sold license.
+
+**Constraint flag key:**
+- **✅** sold inside a marketplace's native checkout with discovery.
+- **◐** partial (discovery in a store, payment through Gumroad or limited native payments).
+- **❌** requires the builder's own site or checkout.
 
 ### Ranked product formats
 
-**(a) Speed to first sale with no audience** (fastest first). The evidence behind these rankings is directional, not measured.
+**(a) Speed to first sale with no audience** (fastest first; directional, based on anecdotes)
 
-1. **Chrome extension, freemium with paywall.** First paid user within 1 day has been reported; Easy Folders made $42K in 6 months. Built-in store search, but new listings get near-zero discovery until reviews accumulate.
-2. **Framer / Notion templates on a marketplace.** Built in days with marketplace discovery, but first-month sales for new sellers are tiny ($135 in 38 days).
-3. **Windows utility on Microsoft Store, plus Gumroad / Lemon Squeezy.** Free listing, keep 100%, store discovery; revenue evidence is thin.
-4. **Mac utility, one-time license sold direct.** Needs a launch moment (r/macapps, X, Product Hunt); fast *if* the launch lands (Screen Studio: 400 licenses in month one).
-5. **Shopify app.** Strong willingness to pay and App Store search, but building it, getting through app review and handling merchant onboarding takes weeks, not days.
-6. **VS Code / Obsidian / Raycast / Figma plugin with an external license key.** Discovery exists, but users expect free, so conversion is low.
-7. **Discord bot (premium tier).** Discovery through bot lists; very low revenue per user.
-8. **Micro-SaaS (web app).** Needs outside marketing or SEO; usually the slowest first dollar.
-9. **Boilerplate / starter kit.** Requires an audience; the category is saturated.
+| # | Format | Constraint | Evidence |
+|---|---|---|---|
+| 1 | Chrome extension, freemium + paywall | ❌ (◐ if license sold via Gumroad) | First paid user in 1 day reported; Easy Folders $42K in 6 months; but median extension has 13 users |
+| 2 | Framer template | ✅ | Built in days; new seller $135 in 38 days |
+| 3 | Gumroad Discover digital product (templates, code assets) | ✅ | Discover gives exposure at a 30% fee; median low |
+| 4 | Windows utility, paid on Microsoft Store | ✅ | Free listing since Sept 2025; store discovery; thin revenue proof |
+| 5 | Mac utility on Mac App Store | ✅ | Store discovery; 15% to 30% cut; category demand proven mostly off-store |
+| 6 | Mac utility sold direct | ❌ | Needs a launch moment (Screen Studio: 400 licenses in month one) |
+| 7 | Shopify app | ✅ | App Store search plus merchants who expect to pay; build and review take weeks |
+| 8 | Discord premium app | ✅ | Bot-list and directory discovery; very low revenue per user |
+| 9 | VS Code / Obsidian / Raycast / Figma plugin | ❌ / ◐ (Figma limited; others via Gumroad license) | Users expect free |
+| 10 | Micro-SaaS on own domain | ❌ | Slowest first dollar without marketing |
+| 11 | Boilerplate | ❌ | Needs an audience; saturated |
 
-**(b) Revenue ceiling** (highest first; based on documented solo or near-solo cases)
+**(b) Revenue ceiling** (highest first; documented solo or near-solo cases)
 
-1. **Micro-SaaS / B2B web app with team plans.** TypingMind reached $130K to $210K/month.
-2. **Workflow Chrome extensions for professionals.** GMass about $130K/month [OLDER]; Closet Tools $42K/month [OLDER]; SuperX $23K MRR; Superpower ChatGPT 5-figure MRR.
-3. **Native Mac pro tools.** Screen Studio (unverified about $200K/month); BoltAI $15K to $30K/month.
-4. **Boilerplates.** Peak $125K/month, but a collapsing category.
-5. **Shopify apps.** Typical $2K to $20K MRR band; median under $1K.
-6. **Framer templates.** Top sellers about $13K to $24K/month; the median is tiny.
-7. **Notion templates.** Median under $520 lifetime.
-8. **VS Code / Figma / Obsidian plugins.** About $200 to $4,000/month for the few that earn.
-9. **Discord bots.** Typically $50 to $250/month.
+| # | Format | Constraint | Evidence |
+|---|---|---|---|
+| 1 | Micro-SaaS / B2B with team plans | ❌ | TypingMind $130K to $210K/month |
+| 2 | Workflow Chrome extensions | ❌/◐ | GMass about $130K/month [OLDER]; Closet Tools $42K/month [OLDER]; SuperX $23K MRR |
+| 3 | Native Mac pro tools sold direct | ❌ | BoltAI $15K to $30K/month; Screen Studio unverified about $200K/month |
+| 4 | Shopify apps | ✅ | $2K to $20K MRR middle band; median under $1K [ESTIMATE] |
+| 5 | Boilerplates | ❌ | Peak $125K/month, now $2K to $20K/month |
+| 6 | Framer templates | ✅ | Top creators $13K to $22K/month; platform $6.5M paid in 2025 |
+| 7 | Mac App Store / Microsoft Store utilities | ✅ | No store-specific solo figures found; Cooldock-type utilities make about $6K/month off-store |
+| 8 | Gumroad Discover templates | ✅ | Notion median under $520 lifetime |
+| 9 | Figma plugins | ◐ | $200 to $800/month median for paid plugins [ESTIMATE] |
+| 10 | VS Code / Obsidian plugins | ❌ | $300 to $4,000/month for the few that earn |
+| 11 | Discord bots | ✅ | $50 to $250/month typical |
 
 **(c) Support burden** (lowest first)
 
-1. **Templates.** No running code; questions are mostly about how to use them.
-2. **One-time desktop utility with offline licensing and no backend.**
-3. **Boilerplate.** Developer questions, plus upkeep as frameworks change.
-4. **Client-side Chrome extension with no backend.** Breaks when host sites change and needs MV3 compliance.
-5. **VS Code / Obsidian plugin.** API changes; issues filed on public repos.
-6. **Chrome extension with backend or AI usage.** API costs and billing support.
-7. **Discord bot.** Uptime and hosting; Discord API changes.
-8. **Micro-SaaS.** Uptime, billing, churn, feature requests.
-9. **Shopify app.** Merchant support expectations, theme conflicts, app review requirements, billing API.
-10. **Anything sold as a lifetime deal with ongoing server costs.** The worst combination.
+| # | Format | Constraint |
+|---|---|---|
+| 1 | Framer / Gumroad templates | ✅ |
+| 2 | One-time desktop utility, offline, no backend (Microsoft Store / Mac App Store) | ✅ |
+| 3 | Boilerplate | ❌ |
+| 4 | Client-side Chrome extension | ❌/◐ |
+| 5 | VS Code / Obsidian plugin | ❌ |
+| 6 | Extension or app with backend or AI costs | varies |
+| 7 | Discord bot | ✅ |
+| 8 | Micro-SaaS | ❌ |
+| 9 | Shopify app | ✅ |
+| 10 | Lifetime deals with server costs (AppSumo) | ✅ |
 
-### Top 5 niches with the strongest revenue evidence that a new entrant could still compete in
+### Top 5 niches with the strongest revenue evidence that a new entrant could still compete in, re-ranked for the marketplace constraint
 
-1. **AI-chat power-user extensions (multi-LLM):** folders, search, export, prompt library and bulk actions for ChatGPT, Claude, Gemini and Perplexity.
-   - **Evidence:** Easy Folders $3.7K MRR / $42K in 6 months at $9/month; Superpower ChatGPT 5-figure MRR, solo, 420K downloads.
-   - **Why a new entrant can still compete:** most incumbents are ChatGPT-first. Claude, Gemini and cross-LLM users are less well served, and buyers are searching the Chrome Web Store for these terms.
-   - **Risk:** the hosts may ship features natively; their page changes break extensions.
-2. **Social/creator productivity extensions for X and LinkedIn:** scheduling helpers, post formatting, analytics overlays, CRM-lite.
-   - **Evidence:** SuperX about $23K MRR at 6 months; Launch Fast about $30K MRR; BlackMagic $2.5K/month [OLDER]; AuthoredUp and Surfe show demand from paying professionals.
-   - **Risk:** platform terms of service and API changes.
-3. **Native desktop utilities sold with a one-time license:** screen capture and annotation, screen recording polish, a local transcription front-end, menu-bar productivity, a BYOK AI client.
-   - **Evidence:** Cooldock about $6.3K in 30 days at $15; Xnapper about $6K/month; BoltAI $15K to $30K/month; Screen Studio 400 licenses in month one at $89; MacWhisper about $100K total.
-   - **Opportunity:** Windows equivalents face less competition and the Microsoft Store is now free to list. The Windows evidence is thinner (inference, not data).
-4. **Reseller / e-commerce operator automation extensions:** cross-listing and bulk actions for Poshmark, Mercari, eBay, Vinted, Etsy and Amazon seller workflows.
-   - **Evidence:** Closet Tools about $42K/month, solo [OLDER, 2020-21]. Buyers are non-technical professionals with clear return on investment who pay monthly.
-   - **Risk:** marketplace terms of service and anti-automation measures; revenue evidence needs a 2025-26 refresh.
-5. **Narrow-pain Shopify apps:** a single-job admin or storefront fix that merchants search the App Store for.
-   - **Evidence:** a $2K to $20K MRR middle band [ESTIMATE]; 0% revenue share on the first $1M lifetime revenue [OFFICIAL]; merchants are a proven buyer group.
-   - **Trade-off:** slower to launch (weeks) and the heaviest support, but the most durable recurring revenue among marketplace formats.
+1. **Narrow-pain Shopify apps** (✅): one job that merchants search the App Store for, such as a storefront fix, an admin bulk action, or an AI-assisted product-content helper.
+   - **Evidence:** $2K to $20K MRR middle band [ESTIMATE]; 0% revenue share on the first $1M [OFFICIAL]; merchants are a proven buyer group.
+   - **Trade-off:** weeks to launch (app review) and the heaviest support burden.
+2. **Paid Windows desktop utilities on the Microsoft Store** (✅): screen capture and annotation, a "BYOK" AI desktop client, a clipboard or window manager, local transcription.
+   - **Evidence of category demand:** Mac analogs make $6K to $30K/month (Cooldock, Xnapper, BoltAI, MacWhisper, Screen Studio).
+   - **Evidence for the store itself:** free registration since Sept 2025; backiee revenue grew 6x [testimonial].
+   - **Why it may be competable:** Windows equivalents of popular Mac utilities appear less crowded. This is an inference, not data.
+3. **Paid Mac utilities on the Mac App Store** (✅): same categories as #2.
+   - **Evidence:** strong category demand (above), but most documented winners sold direct. Store-specific economics (15% to 30% cut, review) are unproven for these niches.
+4. **Niche Framer website templates** (✅): for example, templates for specific professions or for SaaS/AI-product landing pages.
+   - **Evidence:** $6.5M paid to creators in 2025; top sellers $13K to $22K/month.
+   - **Risk:** crowded shelf; new sellers start at tens to hundreds of dollars.
+5. **AI-chat power-user extension (multi-LLM folders/export/prompt library) with the Pro license sold on Gumroad** (◐: discovery in the Chrome Web Store, payment in Gumroad's checkout).
+   - **Evidence:** Easy Folders $3.7K MRR / $42K in 6 months; Superpower ChatGPT 5-figure MRR, solo.
+   - **Caveat:** only meets the constraint if the user accepts Gumroad checkout plus Chrome Web Store discovery as "marketplace."
 
-**Specifically de-prioritized, with evidence:**
-- **Next.js / SaaS boilerplates.** The category leader went from about $125K/month to $2K to $20K/month amid saturation.
-- **Generic Notion templates.** Median under $520 lifetime; top 1% of Gumroad products take 77% of revenue.
-- **Raycast extensions.** No paid channel.
-- **VS Code / Obsidian plugins as a primary income.** No native payments; users expect free.
-- **Discord bots.** Typically $50 to $250/month.
-- **MRR dashboards and other tools sold to indie hackers.** A crowded field of builders selling to builders.
+**Promising but unresearched marketplace-native options (follow-up needed before choosing):**
+- JetBrains Marketplace paid plugins
+- Atlassian Marketplace apps
+- Unity Asset Store / Fab editor tools
+- Superhive Blender add-ons
+- Steam-sold PC utilities
+
+All have native paid listings and built-in discovery, but **no revenue evidence was gathered in this session** (see section 6 Gaps).
+
+**De-prioritized, with evidence:**
+- **Next.js / SaaS boilerplates** (❌; collapsing category).
+- **Generic Notion templates** (✅ but median under $520 lifetime).
+- **Raycast extensions** (❌, no paid channel).
+- **VS Code / Obsidian plugins** (❌ natively).
+- **Discord bots** (✅ but $50 to $250/month typical).
+- **Lifetime deals with ongoing server costs** (✅ on AppSumo, but support burden).
 
 ### Inferences
-- **Practical selection rule from the evidence:** pick a niche where:
-  - a Chrome Web Store, Microsoft Store or Shopify App Store search already returns paid incumbents with many reviews (proof that people pay);
-  - the top results have weak ratings or support only one platform (the gap);
-  - the buyer is a non-developer professional saving time or money (willingness to pay).
-- Launch with a lifetime or one-time option for early momentum. Add a subscription only for features with ongoing costs or for teams.
+- **Selection rule under the constraint:** pick a niche where:
+  - a search in the *target marketplace* (Shopify App Store, Microsoft Store, Mac App Store, Framer Marketplace) already returns **paid** incumbents with many reviews (proof that people pay);
+  - the top results have weak ratings, stale updates, or support only one platform (the gap);
+  - the buyer is a non-developer professional or merchant saving time or money.
+- For speed within days to weeks under the constraint, the realistic options are a Microsoft Store (and/or Mac App Store) paid utility or a Framer template. A Shopify app has better evidence of willingness to pay, but it is a multi-week effort.
 
 ### Gaps
 - The rankings for speed-to-first-sale and support burden are synthesized from anecdotes and format traits; no dataset measures them directly.
-- Several of the strongest extension revenue figures are 2019-2021 and should be re-checked (for example on TrustMRR or in recent founder posts) before committing.
-- All findings came through search-result summaries because full-page fetching was blocked in this session. Verify key numbers on the primary pages, especially Scoutr/TrustMRR, Easy Folders, SuperX and Cooldock.
+- Several of the strongest extension revenue figures are 2019-2021 and should be re-checked before anyone commits to them.
+- All findings came through search-result summaries, because full-page fetching was blocked in this session. Verify key numbers on the primary pages, especially Scoutr/TrustMRR, Easy Folders, SuperX, Cooldock, Framer payouts and the Microsoft Store terms.
+- No new research was possible on the marketplaces the user's constraint emphasises (Superhive, Fab, Unity, JetBrains, Atlassian, Steam, itch.io, Webflow), because the search budget was exhausted.

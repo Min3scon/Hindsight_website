@@ -3,6 +3,10 @@
 > **Method note for the report writer.** Direct page fetching (WebFetch) was blocked in this research session for every host tried (polar.sh, docs.stripe.com, startupfortune.com). All findings below come from web-search result summaries and the URLs those searches surfaced. Many fee comparisons come from blogs run by **competing merchant-of-record (MoR) vendors** (Dodo Payments, Fungies, Creem, Payhip, Checkout Page). Vendor-official pages are labeled "(official)" where the search surfaced them. Treat every number as "reported in 2026, verify on the live pricing page before committing." Fees that sources disagree on are marked **CONFLICT**.
 >
 > **The biggest late-2026 change:** **Lemon Squeezy closed new sign-ups on 16 Nov 2026 and stops processing payments on 31 Mar 2027.** It is no longer an option for a new seller. Its license-key API stops working at shutdown.
+>
+> **User hard constraint (added mid-task):** the product must be sold through an **established, trusted marketplace with built-in payments**, not a personal website. §2 now includes a native-paid-listing marketplace scorecard, and §8 has been reworked so every path ends on a marketplace listing.
+>
+> **Research-coverage warning:** this session's web-search budget ran out (shared 200-call limit) before the newly requested marketplaces could be researched. Page fetching was also blocked. **No sourced data was gathered for Superhive (Blender Market), Fab (Epic), Unity Asset Store, Atlassian Marketplace, or Figma Community paid resources.** For those, §2 "Gaps" lists **unverified recollections from model training data (pre-mid-2026)**, clearly labeled, which must be verified before being stated as fact. A follow-up research pass is recommended for those five.
 
 ---
 
@@ -110,7 +114,7 @@ For a solo individual in Nov 2026, the practical MoR shortlist is **Polar, Creem
 
 ---
 
-## 2. Marketplaces and app stores
+## 2. Marketplaces and app stores (including native paid listings, per the user's hard constraint)
 
 ### Takeaway
 Cheap entry exists almost everywhere:
@@ -120,7 +124,19 @@ Cheap entry exists almost everywhere:
 - Steam: $100 per app
 - Apple: $99 per year
 
-Several big developer ecosystems have **no native paid listings**: VS Code Marketplace, Chrome Web Store (payments deprecated), Raycast, and Obsidian. Paid tiers there are done with an external checkout plus a license key. JetBrains (15%) and Discord (Premium Apps, US/UK/EU) do have native paid plugin and app commerce.
+**Marketplaces with sourced, native built-in payments:**
+- **Microsoft Store:** free; 15% apps, 12% games
+- **Mac App Store:** $99/yr; 15% under the Small Business Program
+- **Steam:** $100 per app; non-game software limited to certain categories
+- **JetBrains Marketplace:** 15%
+- **Shopify App Store:** $19; 0% on first $1M
+- **itch.io:** 10% default, seller-adjustable
+- **Gumroad Discover:** 30% including processing; Gumroad allows sellers 13+ with a guardian
+- **Discord Premium Apps:** US/UK/EU; reported 70/30
+
+Superhive, Fab, Unity Asset Store, Atlassian, and Figma also have native paid listings, but **could not be researched** this session. See the Gaps section for unverified recollections.
+
+Ecosystems with **no native paid listings** fail the user's constraint unless paired with a marketplace checkout: VS Code Marketplace, Chrome Web Store (payments deprecated), Raycast, and Obsidian.
 
 ### Cited Findings
 
