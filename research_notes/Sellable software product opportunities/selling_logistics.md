@@ -423,93 +423,133 @@ A US individual can sell software as a **sole proprietor with no LLC**. Self-emp
 
 ---
 
-## 8. Recommended fastest path to first sale
+## 8. Recommended fastest path to first sale (every path ends on a trusted marketplace listing with built-in payments)
 
 ### Takeaway
-For a solo individual in late 2026, the fastest, cheapest stack is **a merchant of record with native license keys (Polar, Creem, or Dodo; Gumroad if under 18 or wanting zero setup)**, plus a **free store listing** where one exists (Microsoft Store, Chrome Web Store at $5), plus GitHub or a static site for hosting. **Do not start on Lemon Squeezy** (closed to new stores since 16 Nov 2026). Upfront cash is **$0–$15** for every product type except a Mac GUI app ($99/yr Apple) or signed Windows direct downloads (about $10/mo).
+Under the user's constraint (sell through an established marketplace with built-in payments, not a personal site), the fastest low-cost endpoints are:
+- **Microsoft Store:** $0, Microsoft commerce, 15% cut
+- **itch.io:** $0, instant listing, 10% default cut, Tools category
+- **Gumroad Discover:** $0, 30% on Discover sales, MoR, 13+ with guardian
+- **JetBrains Marketplace:** 15%, native licensing
+- **Shopify App Store:** $19, 0% on first $1M
+- **Mac App Store:** $99/yr, 15%; the only built-in-payments route for a browser extension (as a Safari extension, UNVERIFIED)
+
+**Chrome Web Store, VS Code Marketplace, Raycast, and Obsidian have no built-in payments** and cannot satisfy the constraint on their own. **Lemon Squeezy is closed to new stores** (16 Nov 2026). Upfront cash for every path below is **$0–$19**, except Apple ($99/yr) and Steam ($100 per app).
 
 ### Cited Findings
-These stacks are syntheses. Each component's cost and requirement is cited in §1–§7. The key anchors:
-- Polar: individuals OK, license-key API, ID review before first payout. — [Polar docs](https://polar.sh/docs/merchant-of-record/supported-countries); [Polar license keys](https://polar.sh/docs/features/benefits/license-keys)
-- Creem: 3.9% + 40¢. — [creem.io/pricing](https://creem.io/pricing)
-- Dodo: 4% + 40¢, keys included. — [dodopayments.com/pricing](https://dodopayments.com/pricing)
-- Gumroad: 13+ with guardian for payouts. — [Gumroad help](https://gumroad.com/help/article/260-your-payout-settings-page)
-- Microsoft Store: free individual registration, MSIX signed by Microsoft. — [Windows Dev Blog](https://blogs.windows.com/windowsdeveloper/2025/05/19/microsoft-store-expands-opportunities-for-windows-app-developers/)
-- Chrome Web Store: $5 one time. — [Chrome for Developers](https://developer.chrome.com/docs/webstore/register)
-- ExtensionPay. — [extensionpay.com](https://extensionpay.com/)
-- Artifact Signing: $9.99/mo, US/Canada individuals. — [my-ssl.com](https://my-ssl.com/learn/azure-trusted-signing-vs-code-signing-certificate)
-- Apple Developer Program: $99/yr. — [anything.com](https://www.anything.com/blog/ios-developer-account-setup-solo-founders)
-- Lemon Squeezy is closed to new stores. — [LS docs](https://docs.lemonsqueezy.com/migration)
+Each stack component is cited in §1–§7. Key anchors:
+- Microsoft Store: free individual registration; 15% apps / 12% games; non-game apps may use own commerce; MSIX signed by Microsoft. — [Windows Dev Blog](https://blogs.windows.com/windowsdeveloper/2025/05/19/microsoft-store-expands-opportunities-for-windows-app-developers/); [Microsoft Learn](https://learn.microsoft.com/windows/apps/package-and-deploy/smartscreen-reputation)
+- itch.io: 10% default, adjustable 0–100%; 30% withholding without a tax ID. — [itch.io](https://itch.io/updates/open-revenue-sharing); [getly.store](https://www.getly.store/blog/itch-io-vs-gumroad)
+- Gumroad: Discover 30% including processing; MoR; 13+ with guardian for payouts (US). — [checkoutpage.com](https://checkoutpage.com/blog/gumroad-fees); [Gumroad Help](https://gumroad.com/help/article/260-your-payout-settings-page)
+- JetBrains Marketplace: 15% commission. — [JetBrains docs](https://plugins.jetbrains.com/docs/marketplace/revenue-sharing-and-fees.html)
+- Shopify App Store: $19 once; 0% on first $1M (lifetime from 1 Jan 2025); 2.9% processing. — [shopify.dev](https://shopify.dev/docs/apps/launch/distribution/revenue-share)
+- Apple: $99/yr; 15% Small Business Program; age of majority. — [RevenueCat](https://revenuecat.com/blog/enroll-app-store-small-business-program); [Apple forums](https://developer.apple.com/forums/thread/128800)
+- Steam: $100 per app; games-first; limited software categories. — [Steam Direct](https://partner.steamgames.com/steamdirect)
+- Chrome Web Store: $5; Web Store payments deprecated. — [Chrome for Developers](https://developer.chrome.com/docs/webstore/register); [orlandoascanio.com](https://www.orlandoascanio.com/notes/publish-chrome-extension-web-store-2026)
+- Discord Premium Apps: US/UK/EU; verified app. — [Discord docs](https://docs.discord.com/developers/monetization/enabling-monetization)
 
 ### Inferences
 
-#### (a) Desktop app or CLI tool
-- **Stack:**
-  - **Polar** (Starter, no monthly fee) for checkout, MoR, and license keys. Use **Creem** if lower per-sale fees matter, or **Gumroad** if under 18.
-  - Releases on **GitHub Releases** or a one-page static site (GitHub Pages or Cloudflare Pages, free).
-  - **Microsoft Store** (free individual account) as the Windows channel. Submit as MSIX so Microsoft signs it and SmartScreen warnings disappear.
-  - CLI: also publish via npm, pip, cargo, winget, or scoop.
-- **Upfront cost:**
-  - **$0** for the minimum
-  - Optional **$9.99/mo** Artifact Signing (US/Canada individuals) to sign direct-download .exe/.msi
-  - Optional **$99/yr** Apple Developer to notarize a macOS build. Otherwise ship Windows/Linux first or Mac via a package manager.
-  - Optional domain about $10–15/yr (background knowledge)
-- **Setup steps (1–3 days):**
-  1. Create a Polar account and org, and create a product (one-time or yearly) with a **License Key benefit** (set activation limit to 2–3).
-  2. In the app, add a "Enter license key" screen. Call Polar's license validate/activate endpoint with `organization_id`. Cache a token locally, re-check every couple of weeks, and allow offline grace.
-  3. Free tier or trial: ship the core free with Pro features gated by the key. This also qualifies the tool for Show HN and Reddit.
-  4. Build installers: MSIX for the Store, signed EXE/MSI for direct download if using Artifact Signing.
-  5. Register a free Microsoft Partner Center individual account and submit the MSIX. Non-game apps can use your own Polar checkout and keep 100% of revenue.
-  6. Complete Polar's identity review (ID plus selfie) and connect a domestic bank account via Stripe Connect Express before the first payout.
-  7. Launch: Show HN ("Show HN: <tool> – <one-line benefit>"), 2–3 niche subreddits, an AlternativeTo listing, then Product Hunt.
+#### (a) Desktop app or CLI tool → Microsoft Store (Windows GUI) or itch.io (cross-platform tool or CLI)
+- **Primary stack (Windows GUI app):**
+  - **Microsoft Store paid listing** using Microsoft's built-in commerce: paid app, free trial, or in-app purchase.
+  - MSIX package, so Microsoft signs it and SmartScreen warnings disappear.
+  - Individual Partner Center account is free.
+  - Microsoft takes **15%**. No separate MoR or license server is needed because Store licensing handles entitlement.
+- **Primary stack (CLI or cross-platform tool):**
+  - **itch.io paid listing** in the Tools category, using itch.io's built-in checkout.
+  - Set the revenue share (10% default; you may lower it).
+  - Upload Windows, macOS, and Linux builds. Buyers get download keys automatically.
+- **Optional add-ons:**
+  - **Mac App Store** ($99/yr, 15%) for a sandbox-compatible Mac GUI app.
+  - **Steam** ($100) only if the tool fits Steam's accepted software categories, such as Animation & Modeling, Audio/Video Production, or Design & Illustration.
+- **Upfront cost:** **$0** (Microsoft Store and/or itch.io). Mac App Store adds $99/yr.
+- **Setup steps:**
+  1. **Day 0:** Create a free Microsoft Partner Center individual account (ID verification) and/or an itch.io account. Fill in the tax interview (W-9 for US) to avoid 30% withholding on itch.io.
+  2. **Day 1–3:** Build. Package as MSIX for the Store. Zip per-OS builds for itch.io.
+  3. **Microsoft Store:**
+     - Reserve the app name.
+     - Set price, trial, and markets.
+     - Upload screenshots, a description, and a privacy policy URL (a GitHub Pages page is fine since it isn't a sales page).
+     - Submit for certification (UNVERIFIED: typically ~1–3 business days).
+  4. **itch.io:**
+     - Create the project (kind: Tool) and set "Paid" with a minimum price.
+     - Choose the payout mode ("collected by itch.io" to have itch.io handle payments and tax; UNVERIFIED).
+     - Upload builds and publish. The listing is live immediately (UNVERIFIED).
+  5. **Anti-piracy:** rely on Store licensing (Microsoft) or itch.io download keys. Skip custom DRM for v1.
+  6. **Launch:** Show HN linking to the Store or itch.io page (a usable product, not a landing page), 2–3 niche subreddits, an AlternativeTo listing pointing at the Store page, then Product Hunt.
+- **If the tool is an IDE plugin:** use **JetBrains Marketplace** (15%; JetBrains bills and licenses). Expect plugin review and a required trial (UNVERIFIED). For VS Code there is no marketplace payment, so sell a license via **Gumroad** (trusted checkout, Discover listing) and validate the key in the extension.
 
-#### (b) Browser extension
-- **Stack:**
-  - **Chrome Web Store** ($5 one-time).
-  - Payments: **ExtensionPay** (Stripe-backed; fastest to wire in, but Stripe is not an MoR, so you handle tax). Alternatively, an **external MoR checkout (Polar, Creem, or Dodo) plus license-key or account check**, which handles global tax.
-  - Also list on the Edge and Firefox add-on stores (no fee, per background knowledge).
-- **Upfront cost:** **$5**.
-- **Setup steps (1–2 days):**
-  1. Pay the $5 Chrome Web Store registration and verify the developer account.
-  2. Choose a payment path:
-     - **Quickest:** ExtensionPay. Create an account, connect Stripe (needs 18+ or guardian sign-off), add the ExtensionPay library, and gate features with `extpay.getUser()` (from background knowledge of the library).
-     - **Tax-handled:** a Polar or Creem product with license keys. The extension opens the checkout URL, the user pastes the key, and the extension validates it via the MoR API.
-  3. Submit for review with a clear privacy policy and minimal permissions (fewer permissions means faster review, per background knowledge).
-  4. Freemium (free core, paid Pro) works best for store ranking and reviews.
-  5. Launch: Chrome Web Store listing SEO (title and keywords), a Reddit niche sub, Show HN if developer-oriented, and an AlternativeTo listing against the incumbent extension.
+#### (b) Browser extension → Safari via Mac App Store (strict) or Chrome Web Store plus Gumroad (hybrid)
+- **Constraint problem:** Chrome Web Store payments are deprecated, and Edge and Firefox have no built-in payments (background knowledge). **No major browser store sells Chrome extensions with built-in payments.**
+- **Strict-compliance path:**
+  - Ship the extension as a **Safari Web Extension inside a Mac (and optionally iOS) App Store app** (UNVERIFIED distribution model; well known pre-cutoff).
+  - Sell it as a paid app or IAP with Apple's payments.
+  - Costs **$99/yr**, 15% under the Small Business Program, and requires age of majority.
+- **Hybrid path (trusted marketplaces on both ends):**
+  - **Free listing on the Chrome Web Store** ($5): Google-hosted, trusted install.
+  - Premium unlocked by a **license key bought on Gumroad**, a trusted checkout brand and MoR, also listed in Gumroad Discover.
+  - Gumroad offers a license-key verify API (UNVERIFIED this session). The extension validates the key.
+  - Upfront cost: **$5**. Gumroad takes 10% + 50¢ direct, or 30% via Discover.
+- **Setup steps (hybrid):**
+  1. Pay the $5 Chrome Web Store fee.
+  2. Create a Gumroad product with license keys enabled and add a guardian for payouts if under 18.
+  3. In the extension, add an "Upgrade" button linking to the Gumroad product page, plus a key-entry field that calls Gumroad's verify endpoint. Cache the result.
+  4. Submit to the Chrome Web Store with minimal permissions and a privacy policy.
+  5. Launch with Chrome Web Store SEO, a niche subreddit, and AlternativeTo.
+- **Recommendation:** if the user's constraint is strict, **browser extensions are a weak fit**. Prefer a product type in (a), (c), or (d).
 
-#### (c) Web app or micro-SaaS
-- **Stack:**
-  - **Polar, Creem, or Dodo** for subscriptions as MoR. Polar and Creem have the best indie-developer SDKs and docs per the sources reviewed.
-  - Free hosting tier (Vercel, Netlify, Cloudflare, Supabase, per background knowledge) and a custom domain.
-  - Alternative: **Stripe direct plus Stripe Tax** (2.9% + 30¢ + 0.5%) only if selling mostly in-state or US-only at low volume and willing to own sales-tax filing.
-  - **Stripe Managed Payments** (about 6.4% + 30¢ US) is only worth it if you already live in Stripe and are in one of its 37 countries.
-- **Upfront cost:** **about $10–15/yr** for a domain. Everything else on free tiers.
-- **Setup steps (3–10 days):**
-  1. Build the MVP with auth. Create a Polar or Creem product with monthly and annual prices.
-  2. Wire the checkout link and a **webhook** (`subscription.created`, `updated`, `canceled`) to set the user's plan in your database. Use the customer-portal link for self-serve cancellation.
-  3. Pages needed for MoR approval: Terms, Privacy, Refund policy, a pricing page, and your legal name or brand. Paddle explicitly requires a live HTTPS site and legal name in the Terms. Others review similarly.
-  4. Complete KYC and payout bank setup.
-  5. Launch: Show HN (with a usable free tier, not just a waitlist, since landing pages are off-topic), a niche subreddit, "alternative to <incumbent>" SEO pages, and AlternativeTo.
+#### (c) Web app or micro-SaaS → Shopify App Store (or Atlassian, Figma, or Discord in their ecosystems)
+- **Primary stack:**
+  - Build the SaaS as a **Shopify app** sold on the **Shopify App Store**: one-time $19 registration, **0% revenue share on the first $1M**, 2.9% processing.
+  - Shopify bills merchants through its Billing API (UNVERIFIED: required for App Store apps).
+  - Merchants trust it because it installs from Shopify's own store.
+- **Ecosystem alternatives (each has native billing):**
+  - **Atlassian Marketplace** (Jira/Confluence Forge apps; terms UNVERIFIED)
+  - **Figma Community paid plugins** (UNVERIFIED)
+  - **Discord Premium Apps** (bots; US/UK/EU developers; verified app; reported 70/30)
+  - **JetBrains Marketplace** (15%) if the SaaS has an IDE front end
+- **Upfront cost:** **$19** for Shopify (plus a free hosting tier, background knowledge). $0 for Discord, Figma, or Atlassian (UNVERIFIED for the latter two).
+- **Setup steps (Shopify):**
+  1. Create a free Shopify Partner account and a free development store for testing.
+  2. Scaffold the app with Shopify CLI (background knowledge). Implement the core feature plus Billing API plans (free tier and a paid plan with a trial).
+  3. Pay the $19 App Store registration. Prepare the listing: name, screenshots, demo video, privacy policy, support email.
+  4. Submit for App Store review. Budget days to weeks and possible revision rounds (UNVERIFIED).
+  5. Launch: Shopify App Store search optimization (keywords in name and subtitle), r/shopify and r/ecommerce help threads (no spam), Shopify Community forums, and early reviews from your first installs.
+- **Note:** App-review lead time makes Shopify the slowest path here. If "days" is the hard deadline, ship (a) or (d) first.
 
-#### (d) Digital product (template, boilerplate, starter kit)
-- **Stack:**
-  - **Gumroad** for the fastest zero-config launch: MoR, built-in storefront, Discover marketplace exposure (30% on Discover sales), and works for 13–17 with a guardian.
-  - Or **Polar** for developer boilerplates: lower per-sale fee and license keys. Polar also offers GitHub-repo-access and file-download benefits, per background knowledge; verify.
-  - Or **Payhip** (5% free plan, EU/UK VAT handled).
+#### (d) Digital product (template, boilerplate, asset pack, engine or editor tool) → Gumroad Discover, itch.io, or an engine marketplace
+- **Primary stack (fastest):**
+  - **Gumroad** product page with Gumroad as MoR, opted into **Gumroad Discover** (30% on Discover-originated sales, 10% + 50¢ on direct).
+  - Usable at **13+ with a guardian** for payouts (US).
+- **Alternative:** **itch.io** (asset packs and tools; 10% default, adjustable).
+- **Engine and creative-tool ecosystems (native marketplaces; all terms UNVERIFIED this session):**
+  - **Fab** (Epic): Unreal/Unity plugins and tools; recalled 88% to creator
+  - **Unity Asset Store**: editor extensions; recalled 70% to publisher; slower review
+  - **Superhive**: Blender add-ons
+  - **Figma Community**: paid Figma files and plugins
 - **Upfront cost:** **$0**.
-- **Setup steps (same day):**
-  1. Package the product: a zip, or a private GitHub repo for a boilerplate.
-  2. Create the product page with screenshots, a demo link, and "what's included".
-  3. Set the price at **$19 or more** so the fixed 40–50¢ fees don't eat margin (Gumroad's 10% + 50¢ costs $2.40 on $19).
-  4. Delivery: file download, or repo invite via license key or Polar benefit.
-  5. Launch: X build-in-public thread, r/SideProject and relevant framework subreddits (follow promo rules), Indie Hackers milestone post, and Gumroad Discover.
+- **Setup steps (same day for Gumroad or itch.io):**
+  1. Package the product: a zip with README and license, or a private GitHub repo invite delivered via Gumroad's post-purchase content.
+  2. Create the product: price at **$19 or more** so the 50¢ fixed fee is minor, with screenshots, "what's included", and a demo GIF or video.
+  3. Enable license keys if the product needs activation. Turn on Discover eligibility in Gumroad settings (criteria UNVERIFIED).
+  4. On itch.io: create the project, set the paid minimum price, upload, and publish.
+  5. Engine marketplaces: submit for review in parallel. Expect days to weeks (UNVERIFIED), so don't block the first sale on them.
+  6. Launch: X build-in-public thread linking to the Gumroad or itch.io page, relevant framework and engine subreddits (follow promo rules), Indie Hackers milestone post.
 
 #### Cross-cutting notes
-- **Under 18:** use Gumroad with a guardian for payouts, or have a parent own the Polar or Creem account. Apple and Stripe-backed KYC effectively require 18+ or guardian involvement.
-- **Outside the US:** Polar works where Stripe Connect Express supports individuals. Artifact Signing is US/Canada-only for individuals, so use the Microsoft Store for free Windows signing.
-- **Avoid:** Lemon Squeezy (closing), and Steam for non-game developer tools ($100 per app, games-first).
+- **Under 18:** **Gumroad (13+, guardian for payouts, US)** is the only marketplace with a documented minor path. Apple requires age of majority. Others are unknown, so assume a parent must own the account.
+- **Fastest first sale overall:** **Gumroad (Discover) or itch.io**: $0, live the same day, built-in payments, trusted brand.
+- **Fastest no-warning Windows app:** **Microsoft Store**: $0, Microsoft-signed, 15%.
+- **Avoid:**
+  - Lemon Squeezy (closing).
+  - Personal-site-only checkout (violates the user's constraint).
+  - Steam for non-game developer tools ($100, games-first, limited categories).
+  - Chrome Web Store as the payment venue (no built-in payments).
 
 ### Gaps
-- The recommendations rest on headline fees that could not be verified on live official pages this session (fetch blocked). Re-check Polar's post-May-2026 tier pricing and Gumroad's processing-fee treatment before choosing.
-- Approval turnaround for Polar, Creem, and Dodo was not documented in sources found. Allow 1–3 days of buffer for KYC.
+- **Superhive, Fab, Unity Asset Store, Atlassian Marketplace, and Figma Community** seller requirements, revenue shares, payouts, minimum ages, and approval processes were **not researched**: the web-search budget was exhausted and page fetch was blocked. A follow-up pass should verify the "UNVERIFIED" items in §2 Gaps before the final report states them as fact.
+- Payout schedules and minimum payout thresholds for every marketplace above are unconfirmed.
+- Minimum seller age is confirmed only for Apple (age of majority) and Gumroad (13+ with guardian). It is unknown for the Microsoft Store, Steam, itch.io, JetBrains, Shopify, Discord, Fab, Unity, Superhive, Atlassian, and Figma.
+- Review and approval turnaround for the Microsoft Store, Shopify, JetBrains, and Unity is unconfirmed this session. These affect the "within days" goal.
+- Whether Gumroad's 10% on direct sales includes processing remains a CONFLICT (see §1).
