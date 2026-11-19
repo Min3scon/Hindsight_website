@@ -181,6 +181,31 @@ Ecosystems with **no native paid listings** fail the user's constraint unless pa
 **Shopify App Store**
 - Developers keep **100% of their first $1,000,000 in gross app revenue earned from 1 Jan 2025** (lifetime, not annual) and 85% above that. **One-time $19 registration** per Partner account. A **2.9% processing fee** applies to all billing. — [shopify.dev: revenue share (official)](https://shopify.dev/docs/apps/launch/distribution/revenue-share)
 
+**Gumroad Discover (Gumroad's built-in marketplace)**
+- Discover sales are charged a **flat 30%, processing included**. Direct and profile sales are 10% + 50¢. — [checkoutpage.com](https://checkoutpage.com/blog/gumroad-fees); [inkfluenceai.com (checked 13 Nov 2026)](https://www.inkfluenceai.com/gumroad-fee-calculator)
+- Gumroad is MoR (collects and remits sales tax, VAT, and GST). Sellers can start at **13**, with a guardian added for payouts (US). — [Gumroad Help (official)](https://gumroad.com/help/article/260-your-payout-settings-page); [wearefounders.uk](https://www.wearefounders.uk/gumroad-fees-2026-what-sellers-actually-pay-per-sale/)
+
+**itch.io (marketplace with built-in payments; has a Tools category)**
+- Default **10%** platform share, **seller-adjustable 0–100%**. Without a tax ID, **30% default withholding** applies. — [itch.io (official)](https://itch.io/updates/open-revenue-sharing); [getly.store](https://www.getly.store/blog/itch-io-vs-gumroad)
+
+**Native-paid-listing marketplace scorecard** (only sourced cells carry a link; "UNVERIFIED" cells are pre-cutoff recollections listed in Gaps and must be checked; "?" means unknown)
+
+| Marketplace | Fits | Entry cost | Revenue share (platform cut) | Payments, tax | Approval | Min. age | Source |
+|---|---|---|---|---|---|---|---|
+| Microsoft Store | Windows apps and tools | **$0** (individual) | **15% apps / 12% games**; non-game apps may use own commerce at 0% | Microsoft commerce; MSIX signed by Microsoft | Store certification (UNVERIFIED: ~1–3 business days) | ? | [Windows Dev Blog](https://blogs.windows.com/windowsdeveloper/2025/05/19/microsoft-store-expands-opportunities-for-windows-app-developers/) |
+| Mac App Store | Mac apps, Safari extensions (UNVERIFIED) | **$99/yr** | **15%** (Small Business Program, under $1M) else 30% | Apple | App Review | **Age of majority (18 in many regions)** | [RevenueCat](https://revenuecat.com/blog/enroll-app-store-small-business-program); [Apple forums](https://developer.apple.com/forums/thread/128800) |
+| Steam | Games; limited non-game software categories | **$100 per app** (recouped after $1K AGR, per third parties) | UNVERIFIED: 30% (25% above $10M, 20% above $50M) | Valve | Store page and build review (UNVERIFIED: 30-day wait after fee) | ? (CONFLICT) | [Steamworks](https://partner.steamgames.com/doc/gettingstarted/appfee); [Steam Direct](https://partner.steamgames.com/steamdirect) |
+| JetBrains Marketplace | IDE plugins | $0 (UNVERIFIED) | **15%** | JetBrains bills and licenses | Plugin review (UNVERIFIED details) | ? | [JetBrains docs](https://plugins.jetbrains.com/docs/marketplace/revenue-sharing-and-fees.html); [billing & licensing](https://plugins.jetbrains.com/docs/marketplace/billing-and-licensing.html) |
+| Shopify App Store | Shopify merchant apps (SaaS) | **$19 once** | **0% on first $1M lifetime**, 15% after; plus 2.9% processing | Shopify Billing (UNVERIFIED: required for App Store apps) | App review (UNVERIFIED: days to weeks) | ? | [shopify.dev](https://shopify.dev/docs/apps/launch/distribution/revenue-share) |
+| itch.io | Tools, assets, games | **$0** | **10% default, adjustable 0–100%** | itch.io or seller's PayPal/Stripe (UNVERIFIED: itch.io handles VAT/sales tax in "collected by itch.io" mode) | Self-serve, instant listing (UNVERIFIED) | ? | [itch.io](https://itch.io/updates/open-revenue-sharing) |
+| Gumroad Discover | Templates, boilerplates, digital tools | **$0** | **30% on Discover sales** (10% + 50¢ direct) | Gumroad is MoR | Instant product creation; Discover eligibility criteria UNVERIFIED | **13+ (guardian for payouts, US)** | [Gumroad Help](https://gumroad.com/help/article/260-your-payout-settings-page) |
+| Discord Premium Apps | Bots, Activities | $0 | Reported **30%** (2023) | Discord | App verification plus team-owner checks | ? | [Discord docs](https://docs.discord.com/developers/monetization/enabling-monetization) |
+| Superhive (ex-Blender Market) | Blender add-ons and assets | UNVERIFIED | UNVERIFIED | Superhive | UNVERIFIED (creator application) | ? | — |
+| Fab (Epic) | Unreal and Unity plugins, tools, 3D assets | UNVERIFIED: $0 | UNVERIFIED: **12% (creator keeps 88%)** | Epic | UNVERIFIED | ? | — |
+| Unity Asset Store | Unity editor tools, assets | UNVERIFIED: $0 | UNVERIFIED: **30% (publisher keeps 70%)** | Unity | UNVERIFIED: manual review, often 1–2+ weeks | ? | — |
+| Atlassian Marketplace | Jira and Confluence apps (Forge) | UNVERIFIED | UNVERIFIED (historically ~25%; changed for Forge apps) | Atlassian ("Paid via Atlassian") | UNVERIFIED: approval review | ? | — |
+| Figma Community (paid) | Figma plugins, widgets, files | UNVERIFIED | UNVERIFIED | Figma (UNVERIFIED: Stripe-based payouts) | UNVERIFIED: seller application | ? | — |
+
 ### Inferences
 - **Microsoft Store is now the cheapest legitimate way to distribute a Windows desktop app without SmartScreen warnings:** $0 registration, Microsoft signs MSIX packages, and non-game apps can keep 100% using their own checkout (for example a Polar or Creem license key).
 - For VS Code, Raycast, Obsidian, and Chrome extensions, the monetization pattern is the same: free listing, external MoR checkout, and an in-app license-key check. Anything client-side is bypassable, so keep checks light (see §5).
