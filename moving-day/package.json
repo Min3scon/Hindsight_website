@@ -1,0 +1,21 @@
+{
+  "name": "moving-day",
+  "productName": "Moving Day",
+  "version": "0.1.0",
+  "description": "Move your files, apps and settings to a new PC. No account, no cloud.",
+  "main": "src/main/main.js",
+  "type": "commonjs",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/",
+    "test:ui": "node test-ui/run.js",
+    "dist:win": "electron-builder --win nsis",
+    "dist:store": "electron-builder --win appx"
+  },
+  "devDependencies": {
+    "electron": "44.10.2",
+    "electron-builder": "26.18.1"
+  }
+}
