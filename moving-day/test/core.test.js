@@ -342,3 +342,14 @@ test('readBox rejects folders that are not boxes or are from the future', async 
   fs.writeFileSync(path.join(d, box.MANIFEST), JSON.stringify({ format: box.FORMAT, version: 99 }));
   await assert.rejects(box.readBox(d), (e) => e.code === 'NEWER_BOX');
 });
+
+test('files of 4 GB or more are skipped up front on FAT32 drives', async () => {
+  const { home } = makeOldPc();
+  const p = { ...fakePlatform(home), fileSystem: async () => 'FAT32' };
+  const huge = path.join(p.known.downloads, 'huge.iso');
+  fs.writeFileSync(huge, '');
+  fs.truncateSync(huge, 4 * 1024 ** 3 + 1); // sparse: no real disk use
+  const r = await pack({ dest: tmp('md-usb-'), folders: foldersOf(p, ['desktop', 'downloads']), include: {}, platform: p });
+  assert.equal(r.files, 1);
+  assert.ok(r.skipped.some((s) => s.path === huge && /FAT32/.test(s.reason)));
+});

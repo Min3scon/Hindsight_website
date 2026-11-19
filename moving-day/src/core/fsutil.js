@@ -34,7 +34,7 @@ function shouldSkipDir(name) {
   return SKIP_DIRS.has(name.toLowerCase());
 }
 
-const SOFT_ERRORS = new Set(['EBUSY', 'EPERM', 'EACCES', 'ENOENT', 'ELOOP', 'ENAMETOOLONG', 'UNKNOWN', 'EINVAL']);
+const SOFT_ERRORS = new Set(['EFBIG', 'EBUSY', 'EPERM', 'EACCES', 'ENOENT', 'ELOOP', 'ENAMETOOLONG', 'UNKNOWN', 'EINVAL']);
 
 /** Errors that mean "skip this one file and carry on" rather than "stop everything". */
 function isSoftError(err) {
@@ -48,6 +48,7 @@ function reasonFor(err) {
     case 'EACCES': return 'access denied';
     case 'ENOENT': return 'disappeared while copying';
     case 'ENAMETOOLONG': return 'path too long';
+    case 'EFBIG': return 'too big for this drive';
     case 'HASH_MISMATCH': return 'damaged in the box (checksum mismatch)';
     default: return (err && (err.code || err.message)) || 'unknown error';
   }

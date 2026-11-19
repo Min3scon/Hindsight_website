@@ -84,7 +84,21 @@ async function pack(opts) {
     }
   }
 
-  // ---- 2. Space check ----------------------------------------------------------------------
+  // ---- 2. FAT32 drives cannot hold files of 4 GB or more -------------------------------------
+  const fsType = platform.fileSystem ? String((await platform.fileSystem(dest)) || '').toUpperCase() : '';
+  if (fsType === 'FAT32' || fsType === 'FAT') {
+    const LIMIT = 4 * 1024 ** 3 - 1;
+    for (let i = plan.length - 1; i >= 0; i--) {
+      if (plan[i].size > LIMIT) {
+        skipped.push({ path: plan[i].abs, reason: 'too big for this drive (FAT32 holds files up to 4 GB; reformat it as exFAT to include it)' });
+        progress.filesTotal--;
+        progress.bytesTotal -= plan[i].size;
+        plan.splice(i, 1);
+      }
+    }
+  }
+
+  // ---- 3. Space check ----------------------------------------------------------------------
   const journal = await box.readJournal(boxPath);
   let needed = 0;
   for (const f of plan) {
@@ -100,7 +114,7 @@ async function pack(opts) {
     throw e;
   }
 
-  // ---- 3. Extras (fast) --------------------------------------------------------------------
+  // ---- 4. Extras (fast) --------------------------------------------------------------------
   const result = { boxPath, files: 0, bytes: 0, skipped, apps: null, wifi: null, bookmarks: [], wallpaper: null };
   if (include.apps) {
     emit({ phase: 'extras', message: 'Listing your apps…' });
@@ -168,7 +182,7 @@ async function pack(opts) {
     }
   }
 
-  // ---- 4. Copy files ---------------------------------------------------------------------
+  // ---- 5. Copy files ---------------------------------------------------------------------
   progress.phase = 'copy';
   progress.message = 'Packing your files…';
   emit();
@@ -232,7 +246,7 @@ async function pack(opts) {
     result.bytes += size;
   }
 
-  // ---- 5. Finish: compact journal, write manifest + readme --------------------------------
+  // ---- 6. Finish: compact journal, write manifest + readme --------------------------------
   emit({ phase: 'finish', message: 'Finishing up…', current: '' });
   await box.writeJournal(boxPath, kept);
   const manifest = {
