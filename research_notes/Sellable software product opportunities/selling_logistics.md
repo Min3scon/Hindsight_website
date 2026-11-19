@@ -218,6 +218,18 @@ Ecosystems with **no native paid listings** fail the user's constraint unless pa
 - Raycast's official extension-monetization policy, Obsidian's exact disclosure rule for paid plugins, and Discord's current 2026 fee split were not found in official text.
 - Steam's full list of accepted software categories was truncated. Steam's revenue share (commonly 30%) was not confirmed in this session.
 - JetBrains: individual-vendor eligibility and payout terms were not researched.
+- **Not researched (search budget exhausted): Superhive, Fab, Unity Asset Store, Atlassian Marketplace, Figma Community paid resources.** Also not found for any marketplace: payout schedules and thresholds, and explicit minimum ages (other than Apple and Gumroad).
+- **Unverified recollections from model training data (pre-mid-2026). Not sourced; verify each before stating as fact:**
+  - **Fab (Epic):** launched Oct 2024, consolidating the Unreal Engine Marketplace, Sketchfab Store, Quixel, and ArtStation Marketplace. Creators keep **88%** (Epic 12%). Accepts code plugins and tools as well as 3D assets.
+  - **Unity Asset Store:** publisher share **70%** (Unity 30%). Publisher account plus manual package review, historically taking from about a week to several weeks. Editor extensions and tools are a major category.
+  - **Superhive (formerly Blender Market):** rebranded in 2025. Sellers apply as creators, and products are reviewed. Split not recalled with confidence.
+  - **Atlassian Marketplace:** historically vendors kept about 75% of cloud-app revenue. Atlassian later announced revised shares favoring Forge ("Runs on Atlassian") apps. Exact 2026 figures not recalled. Paid apps go through a Marketplace Partner account and app approval. Atlassian bills customers ("Paid via Atlassian") and pays vendors monthly.
+  - **Figma Community paid resources:** introduced in 2023 (initially beta). Creators must apply or be approved to sell. Payouts run through a Stripe-based flow in supported countries. Figma's cut not recalled with confidence.
+  - **JetBrains:** paid plugins must integrate JetBrains' licensing (the Marketplace licensing API) and are expected to offer a free trial (believed 30 days). JetBrains reviews plugins before publication.
+  - **Steam:** standard 30% share, reduced to 25% above $10M and 20% above $50M per app. Developers must wait about 30 days after paying the Steam Direct fee before release, and keep a "Coming Soon" page for about 2 weeks. Store page and build each get a review of a few business days.
+  - **Shopify App Store:** public App Store apps must charge merchants via Shopify's Billing API. App review can take days to weeks.
+  - **Mac App Store:** Safari Web Extensions are distributed as Mac (and iOS) App Store apps, so they can be sold with Apple's built-in payments.
+  - **itch.io:** listings are self-serve and live immediately. In "collected by itch.io, paid later" mode, itch.io handles VAT and sales tax and pays out via PayPal or Stripe after a payout review.
 
 ---
 
